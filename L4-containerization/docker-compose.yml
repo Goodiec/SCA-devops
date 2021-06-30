@@ -2,6 +2,7 @@ version: "3.9"
 services:
   kibana:
     image: kibana:7.13.2
+    restart: always
     ports:
       - 5601:5601
   database:
@@ -11,7 +12,13 @@ services:
       MYSQL_USER: "root"
       MYSQL_PASS: "root"
     ports:
-      - 13306:3306
+      - 3306:3306
+    volumes:
+      - my-db:/var/lib/mysql
   nginx:
     image: nginx
     restart: always
+    ports:
+      - 8080:8080
+volumes:
+  my-db:
