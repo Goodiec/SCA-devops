@@ -13,6 +13,5 @@ services:
     ports:
       - 13306:3306
   nginx:
-    depends_on:
-    image: nginx:alpine
+    image: nginx
     restart: always
